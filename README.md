@@ -10,7 +10,7 @@ The project attempts to analyze if the sentiment stability of financial 10-K rep
 the company’s future mean returns. A diverse portfolio of stocks was selected to test this hypothesis. The
 proposed framework downloads 10-K reports of the companies from SEC’s EDGAR database. It passes
 them through the preprocessing pipeline to extract critical sections of the filings to perform NLP analysis.
-Using [Loughran and McDonald](https://github.com/purvasingh96/StockGram-Intelligent-Portfolio-Manager/blob/main/code/LoughranMcDonald_MasterDictionary_2018.csv) sentiment word list, the framework generates sentiment TF-IDF from
+Using [Loughran and McDonald](https://github.com/StockGram/Intelligent-Portfolio-Manager/blob/main/code/LoughranMcDonald_MasterDictionary_2018.csv) sentiment word list, the framework generates sentiment TF-IDF from
 the 10-K documents to calculate the cosine similarity between two consecutive 10-K reports and proposes
 to leverage this cosine similarity as the alpha factor. For analyzing the effectiveness of our alpha factor
 at predicting future returns, the framework uses the alphalens library to perform factor return analysis,
@@ -38,18 +38,18 @@ data.head()
 ```
 ## Portfolio
 
-We test our hypothesis: *Sentiment stability of financial 10-K report can be a potential trading signal*, on a diverse portfolio of 7 stocks as below:<br>
+We test our hypothesis: *Sentiment stability of financial 10-K report can be a potential trading signal*, on a diverse portfolio of 7 stocks as below:<br><br>
 <img src="./images/1. portfolio table.png" width="70%" height="50%"></img>  
 
 ## The SEC EDGAR Database
-In order to extract financial 10-K reports of the stocks in our universe, we leverage a pre-defined SEC API and the CIK number of the stock. Details on how to extract the 10-K report from SEC EDGAR database and pre-process it can be found in [this notebook](https://github.com/purvasingh96/StockGram-Intelligent-Portfolio-Manager/blob/main/code/extracting-financial-10-k-reports-via-sec-edgar-db.ipynb).  
+In order to extract financial 10-K reports of the stocks in our universe, we leverage a pre-defined SEC API and the CIK number of the stock. Details on how to extract the 10-K report from SEC EDGAR database and pre-process it can be found in [this notebook](https://github.com/StockGram/Intelligent-Portfolio-Manager/blob/main/code/extracting-financial-10-k-reports-via-sec-edgar-db.ipynb).  
 
 ## Loughran McDonald Sentiment Word List
-Loughran McDonald word lists contains 6 different sentiments (negative, positive, uncertainty, litigious, strong modal, and weak modal) which are curated by examining word usage in at least 5% of 10-Ks (i.e., annual reports) during 1994-2008. It is a relatively exhaustive list of words that makes avoidance much more challenging. The sentiment lists are based on the most likely interpretation of a word in a business context. The Loughran and McDonald (LM) word lists are quite extensive: it contains 354 positive and 2,329 negative words. You can find the csv version used in this project [here](https://github.com/purvasingh96/StockGram-Intelligent-Portfolio-Manager/blob/main/code/LoughranMcDonald_MasterDictionary_2018.csv)
+Loughran McDonald word lists contains 6 different sentiments (negative, positive, uncertainty, litigious, strong modal, and weak modal) which are curated by examining word usage in at least 5% of 10-Ks (i.e., annual reports) during 1994-2008. It is a relatively exhaustive list of words that makes avoidance much more challenging. The sentiment lists are based on the most likely interpretation of a word in a business context. The Loughran and McDonald (LM) word lists are quite extensive: it contains 354 positive and 2,329 negative words. You can find the csv version used in this project [here](https://github.com/StockGram/Intelligent-Portfolio-Manager/blob/main/code/LoughranMcDonald_MasterDictionary_2018.csv)
 
 ## Code
 
-You can find the PyTorch implementation of the framework [here](https://github.com/purvasingh96/StockGram-Intelligent-Portfolio-Manager/tree/main/code)
+You can find the PyTorch implementation of the framework [here](https://github.com/StockGram/Intelligent-Portfolio-Manager/blob/main/code/Intelligent%20Portfolio%20Management.ipynb)
 
 ## Evaluation and Results
 
@@ -89,13 +89,12 @@ imply that our Alpha factor is only catching noise.
 Usually, a ratio under 1.0 is considered sub-optimal. Sharpe ratio greater than 1.0 is acceptable to good by investors. A Sharpe ratio
 higher than 2.0 is good, and investors deem a 3.0 or higher Sharpe ratio excellent.
 Looking at the Sharpe ratio of our Alpha factor, we can see that the 10-K filing reports that
-convey the sentiment interesting have the highest Sharpe ratio of 4.10, followed by the 10-K
-documents that express a positive view with a Sharpe ratio of 1.02.<br><br>
+convey a stable positive sentiment have the highest Sharpe ratio of 1.02<br><br>
 
-<img src="./images/3. sharpe ratio.png" width="40%" height="60%"></img><br><br>
+<img src="./images/3. sharpe ratio.png" width="50%" height="70%"></img><br><br>
 
 ## Contributor
-- [Purva Singh](https://purvasingh96.github.io)
+- [StockGram](https://thestockgram.com)
 
 ## Contributing
 
